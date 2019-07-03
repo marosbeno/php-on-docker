@@ -1,0 +1,19 @@
+version: "3"
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: nginx/production/Dockerfile
+    ports: 
+      - "8080:80"
+    networks:
+      - internal
+  php:
+    build:
+      context: .
+      dockerfile: php/Dockerfile
+    networks:
+      - internal
+networks:
+  internal:
+    driver: bridge
